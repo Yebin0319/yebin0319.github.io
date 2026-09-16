@@ -2,7 +2,16 @@
    구예빈의 포트폴리오 — shared styles
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@font-face {
+  font-family: 'Griun Gowoon';
+  src: url('assets/fonts/GriunXHangeul-Gowoon.woff2') format('woff2'),
+       url('assets/fonts/GriunXHangeul-Gowoon.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --bg: #2d0000;
@@ -25,7 +34,7 @@
   --grad: linear-gradient(120deg, var(--accent) 0%, var(--accent-2) 55%, var(--accent-3) 100%);
   --radius: 16px;
   --radius-sm: 10px;
-  --font-sans: 'Manrope', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+  --font-sans: 'Griun Gowoon', 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
   --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
   --shadow-lg: 0 24px 60px -20px rgba(0,0,0,0.55);
   --shadow-sm: 0 8px 24px -12px rgba(0,0,0,0.5);
