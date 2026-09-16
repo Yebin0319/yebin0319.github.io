@@ -161,8 +161,8 @@
       <div class="role-item">
         <div class="role-num">2</div>
         <div>
-          <h4>오늘의 체크리스트 · 알림 연동</h4>
-          <p>KakaoMessageScheduler로 하루 2회(09:00 / 19:00) 오늘의 케어 브리핑과 체크리스트, 회복 기록 리마인더, 날씨·일정 기반 위험 경고를 정기 발송하는 로직을 구현했습니다. TodayChecklistService는 OpenAI 기반으로 오늘의 체크리스트를 생성하도록 설계했고, 프롬프트를 구체화하거나 refresh 파라미터를 추가하고 노출 개수를 3개로 제한하는 등 여러 차례 반복 개선했습니다.</p>
+          <h4>오늘의 체크리스트 (AI)</h4>
+          <p>TodayChecklistService는 OpenAI 기반으로 오늘의 체크리스트를 생성하도록 설계했고, 프롬프트를 구체화하거나 refresh 파라미터를 추가하고 노출 개수를 3개로 제한하는 등 여러 차례 반복 개선했습니다.</p>
         </div>
       </div>
       <div class="role-item">
@@ -215,12 +215,6 @@
         <div class="trouble-row"><span class="tag-label problem">문제</span><p>로컬에서는 정상 동작하던 카카오·구글 로그인이 배포 후 CORS 에러로 실패했습니다.</p></div>
         <div class="trouble-row"><span class="tag-label cause">원인</span><p>SecurityConfig의 Origin 허용 목록에 localhost:3000만 등록되어 있고, 배포 서버 주소와 OAuth2 콜백 경로가 누락되어 있었습니다.</p></div>
         <div class="trouble-row"><span class="tag-label fix">해결</span><p>배포 서버 도메인과 카카오·구글 콜백 URL을 Origin 허용 목록에 추가했습니다.</p></div>
-      </div>
-      <div class="trouble-card">
-        <h4>카카오 알림톡 실제 발송 시각 오차</h4>
-        <div class="trouble-row"><span class="tag-label problem">문제</span><p>@Scheduled를 cron 09:00 / 19:00으로 설정했는데도 실제 발송 시각이 반복적으로 어긋났습니다.</p></div>
-        <div class="trouble-row"><span class="tag-label cause">원인</span><p>스케줄러에 타임존을 지정하지 않아 서버 기본 타임존 기준으로 실행되는 것을 의심해 zone = "Asia/Seoul"을 지정했지만 그래도 재현되어, frontendBaseUrl 등 실제 주입값을 확인하는 디버그 로그를 추가하고 여러 시각대(17:50 / 18:25 / 18:45 등)로 반복 테스트했습니다.</p></div>
-        <div class="trouble-row"><span class="tag-label fix">해결</span><p>모든 @Scheduled 트리거에 zone = "Asia/Seoul"을 명시하고, 테스트용 임시 발송 메서드를 제거해 정규 스케줄(09:00 / 19:00, 21:00×2)로 최종 확정했습니다.</p></div>
       </div>
     </div>
   </div>
