@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>구예빈의 포트폴리오</title>
+<meta name="description" content="한국외국어대학교 컴퓨터공학부 구예빈의 백엔드 개발 포트폴리오입니다.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">구예빈<span class="dot">.</span></a>
+    <div class="nav-menu">
+      <div class="nav-item"><a href="index.html" class="nav-link active" data-page="index.html">Home</a></div>
+      <div class="nav-item has-dropdown">
+        <a href="#projects" class="nav-link">
+          Projects
+          <svg class="caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </a>
+        <div class="dropdown">
+          <a href="projects/madi.html" class="dropdown-link">
+            <div class="dropdown-badge">Ma</div>
+            <div class="dropdown-text"><div class="t">마디 (Madi)</div><div class="d">시술 후 회복 관리 서비스</div></div>
+          </a>
+          <a href="projects/roomfit.html" class="dropdown-link">
+            <div class="dropdown-badge">Rf</div>
+            <div class="dropdown-text"><div class="t">Roomfit</div><div class="d">룸메이트 매칭 서비스</div></div>
+          </a>
+          <a href="projects/hufjok.html" class="dropdown-link">
+            <div class="dropdown-badge">Hj</div>
+            <div class="dropdown-text"><div class="t">HUFJOK</div><div class="d">외대생 전용 시험자료 공유 플랫폼</div></div>
+          </a>
+          <a href="projects/manitotti.html" class="dropdown-link">
+            <div class="dropdown-badge">Mn</div>
+            <div class="dropdown-text"><div class="t">마니또띠</div><div class="d">마니또 매칭 서비스</div></div>
+          </a>
+        </div>
+      </div>
+      <div class="nav-item"><a href="about.html" class="nav-link" data-page="about.html">About</a></div>
+    </div>
+    <div class="nav-cta">
+      <a href="https://github.com/Yebin0319" target="_blank" rel="noopener" class="icon-btn gh-desktop" aria-label="GitHub">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.34-1.28-1.7-1.28-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.56-.29-5.26-1.28-5.26-5.7 0-1.26.45-2.29 1.19-3.09-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11.05 11.05 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.64 1.59.24 2.76.12 3.05.74.8 1.18 1.83 1.18 3.09 0 4.43-2.7 5.4-5.28 5.69.42.36.78 1.07.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.53 10.53 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z"/></svg>
+      </a>
+      <a href="mailto:kuyebin@hufs.ac.kr" class="btn btn-primary" style="padding:9px 18px;">Contact</a>
+      <button class="nav-toggle" aria-label="메뉴 열기">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu">
+    <a href="index.html">Home</a>
+    <a href="#projects">Projects</a>
+    <div class="mm-sub">
+      <a href="projects/madi.html">→ 마디 (Madi)</a>
+      <a href="projects/roomfit.html">→ Roomfit</a>
+      <a href="projects/hufjok.html">→ HUFJOK</a>
+      <a href="projects/manitotti.html">→ 마니또띠</a>
+    </div>
+    <a href="about.html">About</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="eyebrow" style="justify-content:center;">Backend Developer</div>
+    <h1>구예빈의 <span class="grad-text">포트폴리오</span></h1>
+    <p class="lede">한국외국어대학교 컴퓨터공학부에서 백엔드를 공부하고 있습니다. Spring Boot와 AWS로 서비스를 처음부터 끝까지 만들어보는 과정을 좋아하고, 지금까지 4개의 팀 프로젝트에서 백엔드를 맡아왔습니다.</p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">프로젝트 보기</a>
+      <a href="about.html" class="btn btn-ghost">자격증 · 활동 이력</a>
+    </div>
+    <div class="hero-meta">
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5Zm0 0v6c3.33 1.67 6.67 2.5 10 2.5s6.67-.83 10-2.5v-6"/></svg>한국외국어대학교 컴퓨터공학부 · 2023.03 입학</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2003.03.19</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>010-2994-1448</span>
+      <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/></svg>kuyebin@hufs.ac.kr</span>
+      <a href="https://github.com/Yebin0319" target="_blank" rel="noopener"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3 0 0 0-6.2 0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg>github.com/Yebin0319</span></a>
+    </div>
+  </div>
+</header>
+
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Selected Work</div>
+        <h2>진행한 프로젝트</h2>
+        <p class="sub">기획부터 배포까지 참여한 4개의 팀 프로젝트입니다. 각 프로젝트 페이지에서 시연 영상과 개발 과정을 자세히 볼 수 있어요.</p>
+      </div>
+    </div>
+
+    <div class="grid-projects">
+      <a href="projects/madi.html" class="project-card reveal">
+        <div class="glow"></div>
+        <div class="pc-top">
+          <span class="pc-period">2026.08 · 해커톤</span>
+          <span class="status-badge">완성</span>
+        </div>
+        <div class="pc-title">마디 (Madi)</div>
+        <p class="pc-desc">시술을 케어카드로 등록하면 D-day 기준 오늘의 케어를 안내하고, 회복 기록에 AI 피드백과 카카오톡 브리핑을 더한 회복 관리 서비스.</p>
+        <div class="pc-tags">
+          <span class="tag">Spring Boot</span><span class="tag">OAuth2</span><span class="tag">OpenAI API</span><span class="tag">Kakao</span>
+        </div>
+        <div class="pc-foot">
+          <span class="pc-role">백엔드 개발 · 3주 해커톤</span>
+          <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="projects/roomfit.html" class="project-card reveal">
+        <div class="glow"></div>
+        <div class="pc-top">
+          <span class="pc-period">2026.03 – 06</span>
+          <span class="status-badge">완성</span>
+        </div>
+        <div class="pc-title">Roomfit</div>
+        <p class="pc-desc">12가지 라이프스타일 항목을 온보딩으로 수집해 15가지 유형으로 분류하고, Gemini API로 우선순위를 반영한 룸메이트를 추천하는 매칭 서비스.</p>
+        <div class="pc-tags">
+          <span class="tag">Spring Boot</span><span class="tag">Gemini API</span><span class="tag">AWS EC2</span><span class="tag">JWT</span>
+        </div>
+        <div class="pc-foot">
+          <span class="pc-role">팀장 · 백엔드 개발</span>
+          <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="projects/hufjok.html" class="project-card reveal">
+        <div class="glow"></div>
+        <div class="pc-top">
+          <span class="pc-period">2025.09 – 12</span>
+          <span class="status-badge">완성</span>
+        </div>
+        <div class="pc-title">HUFJOK</div>
+        <p class="pc-desc">@hufs.ac.kr 이메일 인증으로 외대생만 접근할 수 있는 시험자료 공유 플랫폼. 자료를 올리면 포인트를 받고, 포인트로 다른 자료를 구매하는 구조.</p>
+        <div class="pc-tags">
+          <span class="tag">Spring Boot</span><span class="tag">Google OAuth2</span><span class="tag">AWS EC2</span>
+        </div>
+        <div class="pc-foot">
+          <span class="pc-role">백엔드 개발</span>
+          <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+
+      <a href="projects/manitotti.html" class="project-card reveal">
+        <div class="glow"></div>
+        <div class="pc-top">
+          <span class="pc-period">2025.03 – 06</span>
+          <span class="status-badge">완성</span>
+        </div>
+        <div class="pc-title">마니또띠</div>
+        <p class="pc-desc">그룹을 만들고 무작위 알고리즘으로 마니또를 배정한 뒤, 익명 게시글과 방명록으로 마무리하는 마니또 매칭 서비스.</p>
+        <div class="pc-tags">
+          <span class="tag">Spring Boot</span><span class="tag">JWT</span><span class="tag">MySQL</span>
+        </div>
+        <div class="pc-foot">
+          <span class="pc-role">백엔드 개발</span>
+          <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">Stack</div>
+        <h2>기술 스택</h2>
+        <p class="sub">주로 Spring Boot로 백엔드를 설계하고, AWS에 직접 배포까지 하는 편입니다.</p>
+      </div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card reveal"><span class="k">Language</span><div class="v">Java · Python</div></div>
+      <div class="skill-card reveal"><span class="k">Framework</span><div class="v">Spring Boot · FastAPI</div></div>
+      <div class="skill-card reveal"><span class="k">Database</span><div class="v">MySQL · PostgreSQL</div></div>
+      <div class="skill-card reveal"><span class="k">ORM</span><div class="v">JPA / Hibernate · SQLAlchemy</div></div>
+      <div class="skill-card reveal"><span class="k">Cloud</span><div class="v">AWS EC2 · RDS · S3</div></div>
+      <div class="skill-card reveal"><span class="k">DevOps</span><div class="v">Docker · GitHub Actions</div></div>
+      <div class="skill-card reveal"><span class="k">Auth</span><div class="v">JWT · Spring Security · OAuth2</div></div>
+      <div class="skill-card reveal"><span class="k">More</span><div class="v"><a href="about.html" style="color:var(--accent);">자격증 · 활동 이력 →</a></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <span class="copyright">© 2026 Gu Yebin</span>
+      <div class="footer-links">
+        <a href="mailto:kuyebin@hufs.ac.kr">Email</a>
+        <a href="https://github.com/Yebin0319" target="_blank" rel="noopener">GitHub</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
