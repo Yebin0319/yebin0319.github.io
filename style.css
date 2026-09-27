@@ -260,14 +260,14 @@ h1, h2, h3, h4, p { margin: 0; }
   gap: 64px;
 }
 .hero-text { text-align: left; }
-.hero-avatar {
-  flex: none;
-  width: 176px;
-  height: 176px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 4px solid var(--panel);
-  box-shadow: 0 0 0 1px var(--border), var(--shadow-lg);
+.hero-solo { justify-content: center; }
+.hero-solo .hero-text {
+  text-align: center;
+  max-width: 640px;
+}
+.hero-solo .hero-actions,
+.hero-solo .hero-meta {
+  justify-content: center;
 }
 .hero h1 {
   font-size: clamp(40px, 6.4vw, 64px);

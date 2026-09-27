@@ -54,7 +54,6 @@ body::before { display: none; }
   text-align: center;
   min-height: 267mm;
 }
-.cover .hero-avatar { width: 132px; height: 132px; margin-bottom: 26px; }
 .cover h1 { font-size: 46px; margin-bottom: 14px; }
 .cover .eyebrow { justify-content: center; }
 .cover .cover-meta {
