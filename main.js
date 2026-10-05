@@ -66,7 +66,7 @@ function initRing(root) {
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const step = (2 * Math.PI) / n;
-  const DRIFT = 1 / 4;      // cards per second — one card every ~4s
+  const DRIFT = 1 / 3;      // cards per second — one card every ~3s
   const HOLD_MS = 7000;     // pause after the visitor picks a card
 
   let pos = 0;              // ring position, in card units
@@ -81,6 +81,8 @@ function initRing(root) {
   let last = 0;
   const playing = cards.map(() => false);
 
+  // Cards vary in shape (phone vs. desktop recordings), so spacing is based on the shared box width
+  const slot = () => Math.max(...cards.map((c) => c.offsetWidth)); // the widest card spans the full box
   const mod = (i) => ((i % n) + n) % n;
   const wrap = (d) => mod(d + n / 2) - n / 2; // shortest signed distance, in [-n/2, n/2)
 
@@ -105,13 +107,13 @@ function initRing(root) {
   });
 
   function layout() {
-    const radius = cards[0].offsetWidth * 0.78;
+    const radius = slot() * 0.78;
     cards.forEach((card, i) => {
       const d = wrap(i - pos);
       const a = d * step;
       const far = Math.abs(d);
       const tilt = Math.max(-60, Math.min(60, (a * 180) / Math.PI * 0.4));
-      card.style.transform = `translate3d(${(Math.sin(a) * radius).toFixed(1)}px, 0, ${((Math.cos(a) - 1) * radius).toFixed(1)}px) rotateY(${tilt.toFixed(2)}deg)`;
+      card.style.transform = `translate(-50%, -50%) translate3d(${(Math.sin(a) * radius).toFixed(1)}px, 0, ${((Math.cos(a) - 1) * radius).toFixed(1)}px) rotateY(${tilt.toFixed(2)}deg)`;
       card.style.opacity = String(Math.max(0.25, 1 - Math.max(0, far - 1) * 0.6));
       card.style.zIndex = String(100 - Math.round(far * 10));
       card.style.setProperty('--dim', Math.min(0.45, far * 0.32).toFixed(3));
@@ -190,7 +192,7 @@ function initRing(root) {
     const dx = e.clientX - drag.x;
     if (!drag.moved && Math.abs(dx) < 6) return;
     if (!drag.moved) { drag.moved = true; stage.classList.add('is-dragging'); }
-    pos = drag.start - dx / (cards[0].offsetWidth * 0.9);
+    pos = drag.start - dx / (slot() * 0.9);
   });
   const endDrag = () => {
     if (!drag) return;
