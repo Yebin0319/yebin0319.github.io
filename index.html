@@ -94,95 +94,100 @@
       <div>
         <div class="eyebrow">Selected Work</div>
         <h2>진행한 프로젝트</h2>
-        <p class="sub">기획부터 배포까지 참여한 5개의 팀 프로젝트입니다. <span class="wavy-hl">각 프로젝트 페이지에서 시연 영상과 개발 과정을 자세히 볼 수 있어요.</span></p>
+        <p class="sub">기획부터 배포까지 참여한 5개의 팀 프로젝트입니다. <span class="wavy-hl">카드를 넘기며 시연 영상을 보고, 자세히 보기에서 개발 과정을 확인할 수 있어요.</span></p>
       </div>
     </div>
+  </div>
 
-    <div class="grid-projects">
-      <a href="projects/madi.html" class="project-card reveal">
-        <div class="glow"></div>
-        <div class="pc-top">
-          <span class="pc-period">2026.08 · 해커톤</span>
-          <span class="status-badge">완성</span>
-        </div>
-        <div class="pc-title">마디 (Madi)</div>
-        <p class="pc-desc">시술을 케어카드로 등록하면 D-day 기준 오늘의 케어를 안내하고, 회복 기록에 AI 피드백과 카카오톡 브리핑을 더한 회복 관리 서비스.</p>
-        <div class="pc-tags">
-          <span class="tag">Spring Boot</span><span class="tag">OAuth2</span><span class="tag">OpenAI API</span><span class="tag">Google Calendar API</span><span class="tag">Kakao</span>
-        </div>
-        <div class="pc-foot">
+  <div class="ring reveal" data-ring>
+    <div class="ring-stage" tabindex="0" role="group" aria-roledescription="carousel" aria-label="프로젝트 시연 영상 · 좌우 방향키로 넘기기">
+      <figure class="ring-card">
+        <video src="assets/videos/madi.mp4" poster="assets/img/posters/madi.jpg" muted loop playsinline preload="metadata" aria-label="마디 시연 영상"></video>
+        <figcaption>마디 (Madi)</figcaption>
+      </figure>
+      <figure class="ring-card">
+        <video src="assets/videos/scifit-sync.mp4" poster="assets/img/posters/scifit-sync.jpg" muted loop playsinline preload="metadata" aria-label="SciFit-Sync 시연 영상"></video>
+        <figcaption>SciFit-Sync</figcaption>
+      </figure>
+      <figure class="ring-card">
+        <video src="assets/videos/roomfit.mp4" poster="assets/img/posters/roomfit.jpg" muted loop playsinline preload="metadata" aria-label="Roomfit 시연 영상"></video>
+        <figcaption>Roomfit</figcaption>
+      </figure>
+      <figure class="ring-card">
+        <video src="assets/videos/hufjok.mp4" poster="assets/img/posters/hufjok.jpg" muted loop playsinline preload="metadata" aria-label="HUFJOK 시연 영상"></video>
+        <figcaption>HUFJOK</figcaption>
+      </figure>
+      <figure class="ring-card">
+        <video src="assets/videos/manitotti.mp4" poster="assets/img/posters/manitotti.jpg" muted loop playsinline preload="metadata" aria-label="마니또띠 시연 영상"></video>
+        <figcaption>마니또띠</figcaption>
+      </figure>
+    </div>
+
+    <div class="ring-controls">
+      <button type="button" class="ring-btn" data-ring-prev aria-label="이전 프로젝트">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+      </button>
+      <div class="ring-dots" role="tablist" aria-label="프로젝트 선택"></div>
+      <button type="button" class="ring-btn" data-ring-next aria-label="다음 프로젝트">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    </div>
+
+    <div class="ring-info container" aria-live="polite">
+      <article class="ring-panel">
+        <div class="rp-meta"><span class="pc-period">2026.08 · 해커톤</span><span class="status-badge">완성</span></div>
+        <h3 class="rp-title">마디 (Madi)</h3>
+        <p class="rp-desc">시술을 케어카드로 등록하면 D-day 기준 오늘의 케어를 안내하고, 회복 기록에 AI 피드백과 카카오톡 브리핑을 더한 회복 관리 서비스.</p>
+        <div class="pc-tags"><span class="tag">Spring Boot</span><span class="tag">OAuth2</span><span class="tag">OpenAI API</span><span class="tag">Google Calendar API</span><span class="tag">Kakao</span></div>
+        <div class="rp-foot">
           <span class="pc-role">팀장 · 백엔드 개발 · 3주 해커톤</span>
-          <span class="pc-cta">자세히 보기 <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <a href="projects/madi.html" class="btn btn-primary">자세히 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </a>
+      </article>
 
-      <a href="projects/scifit-sync.html" class="project-card reveal">
-        <div class="glow"></div>
-        <div class="pc-top">
-          <span class="pc-period">2026.03 – 06 · 캡스톤</span>
-          <span class="status-badge">완성</span>
-        </div>
-        <div class="pc-title">SciFit-Sync</div>
-        <p class="pc-desc">스포츠 과학 논문을 RAG 파이프라인으로 분석해, 신체 정보·운동 목표·보유 기구에 맞는 근거 기반 운동 루틴을 자동 생성하는 앱.</p>
-        <div class="pc-tags">
-          <span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React Native</span><span class="tag">JWT</span>
-        </div>
-        <div class="pc-foot">
+      <article class="ring-panel">
+        <div class="rp-meta"><span class="pc-period">2026.03 – 06 · 캡스톤</span><span class="status-badge">완성</span></div>
+        <h3 class="rp-title">SciFit-Sync</h3>
+        <p class="rp-desc">스포츠 과학 논문을 RAG 파이프라인으로 분석해, 신체 정보·운동 목표·보유 기구에 맞는 근거 기반 운동 루틴을 자동 생성하는 앱.</p>
+        <div class="pc-tags"><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">React Native</span><span class="tag">JWT</span></div>
+        <div class="rp-foot">
           <span class="pc-role">백엔드 개발 · 앱 화면 구현</span>
-          <span class="pc-cta">자세히 보기 <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <a href="projects/scifit-sync.html" class="btn btn-primary">자세히 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </a>
+      </article>
 
-      <a href="projects/roomfit.html" class="project-card reveal">
-        <div class="glow"></div>
-        <div class="pc-top">
-          <span class="pc-period">2026.03 – 07</span>
-          <span class="status-badge">완성</span>
-        </div>
-        <div class="pc-title">Roomfit</div>
-        <p class="pc-desc">12가지 라이프스타일 항목을 온보딩으로 수집해 15가지 유형으로 분류하고, Gemini API로 우선순위를 반영한 룸메이트를 추천하는 매칭 서비스.</p>
-        <div class="pc-tags">
-          <span class="tag">Spring Boot</span><span class="tag">Gemini API</span><span class="tag">AWS EC2</span><span class="tag">JWT</span>
-        </div>
-        <div class="pc-foot">
+      <article class="ring-panel">
+        <div class="rp-meta"><span class="pc-period">2026.03 – 07</span><span class="status-badge">완성</span></div>
+        <h3 class="rp-title">Roomfit</h3>
+        <p class="rp-desc">12가지 라이프스타일 항목을 온보딩으로 수집해 15가지 유형으로 분류하고, Gemini API로 우선순위를 반영한 룸메이트를 추천하는 매칭 서비스.</p>
+        <div class="pc-tags"><span class="tag">Spring Boot</span><span class="tag">Gemini API</span><span class="tag">AWS EC2</span><span class="tag">JWT</span></div>
+        <div class="rp-foot">
           <span class="pc-role">팀장 · 백엔드 개발</span>
-          <span class="pc-cta">자세히 보기 <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <a href="projects/roomfit.html" class="btn btn-primary">자세히 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </a>
+      </article>
 
-      <a href="projects/hufjok.html" class="project-card reveal">
-        <div class="glow"></div>
-        <div class="pc-top">
-          <span class="pc-period">2025.09 – 12</span>
-          <span class="status-badge">완성</span>
-        </div>
-        <div class="pc-title">HUFJOK</div>
-        <p class="pc-desc">@hufs.ac.kr 이메일 인증으로 외대생만 접근할 수 있는 시험자료 공유 플랫폼. 자료를 올리면 포인트를 받고, 포인트로 다른 자료를 구매하는 구조.</p>
-        <div class="pc-tags">
-          <span class="tag">Spring Boot</span><span class="tag">Google OAuth2</span><span class="tag">AWS EC2</span>
-        </div>
-        <div class="pc-foot">
+      <article class="ring-panel">
+        <div class="rp-meta"><span class="pc-period">2025.09 – 12</span><span class="status-badge">완성</span></div>
+        <h3 class="rp-title">HUFJOK</h3>
+        <p class="rp-desc">@hufs.ac.kr 이메일 인증으로 외대생만 접근할 수 있는 시험자료 공유 플랫폼. 자료를 올리면 포인트를 받고, 포인트로 다른 자료를 구매하는 구조.</p>
+        <div class="pc-tags"><span class="tag">Spring Boot</span><span class="tag">Google OAuth2</span><span class="tag">AWS EC2</span></div>
+        <div class="rp-foot">
           <span class="pc-role">백엔드 개발</span>
-          <span class="pc-cta">자세히 보기 <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <a href="projects/hufjok.html" class="btn btn-primary">자세히 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </a>
+      </article>
 
-      <a href="projects/manitotti.html" class="project-card reveal">
-        <div class="glow"></div>
-        <div class="pc-top">
-          <span class="pc-period">2025.03 – 06</span>
-          <span class="status-badge">완성</span>
-        </div>
-        <div class="pc-title">마니또띠</div>
-        <p class="pc-desc">그룹을 만들고 무작위 알고리즘으로 마니또를 배정한 뒤, 익명 게시글과 방명록으로 마무리하는 마니또 매칭 서비스.</p>
-        <div class="pc-tags">
-          <span class="tag">Spring Boot</span><span class="tag">JWT</span><span class="tag">MySQL</span>
-        </div>
-        <div class="pc-foot">
+      <article class="ring-panel">
+        <div class="rp-meta"><span class="pc-period">2025.03 – 06</span><span class="status-badge">완성</span></div>
+        <h3 class="rp-title">마니또띠</h3>
+        <p class="rp-desc">그룹을 만들고 무작위 알고리즘으로 마니또를 배정한 뒤, 익명 게시글과 방명록으로 마무리하는 마니또 매칭 서비스.</p>
+        <div class="pc-tags"><span class="tag">Spring Boot</span><span class="tag">JWT</span><span class="tag">MySQL</span></div>
+        <div class="rp-foot">
           <span class="pc-role">백엔드 개발</span>
-          <span class="pc-cta">자세히 보기 <span class="pc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></span>
+          <a href="projects/manitotti.html" class="btn btn-primary">자세히 보기 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         </div>
-      </a>
+      </article>
     </div>
   </div>
 </section>
