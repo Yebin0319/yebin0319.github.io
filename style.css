@@ -885,8 +885,6 @@ h1, h2, h3, h4, p { margin: 0; }
 .mobile-menu .mm-sub a { font-size: 15px; font-weight: 600; color: var(--text-dim); padding: 12px 4px; }
 
 /* ---------------- Diary stickers ---------------- */
-.hero { position: relative; overflow: hidden; }
-.hero-stickers { position: absolute; inset: 0; pointer-events: none; }
 .sticker {
   position: absolute;
   margin: 0;
@@ -913,22 +911,13 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 .tape.tape-pink { background: rgba(229,139,163,0.55); transform: rotate(5deg); }
 
-.sticker-left  { width: 210px; left: max(12px, calc(50% - 640px)); top: 150px; transform: rotate(-7deg); }
-.sticker-right { width: 150px; right: max(12px, calc(50% - 620px)); top: 190px; transform: rotate(6deg); }
-.sticker-left:hover  { transform: rotate(-3deg) scale(1.04); }
-.sticker-right:hover { transform: rotate(2deg) scale(1.04); }
 
 .about-hero { position: relative; }
 .sticker-about { width: 190px; right: 40px; top: 118px; transform: rotate(5deg); }
 .sticker-about:hover { transform: rotate(1deg) scale(1.04); }
 .about-hero .lede { max-width: min(620px, calc(100% - 240px)); }
 
-@media (max-width: 1100px) {
-  .sticker-left  { width: 150px; top: 120px; }
-  .sticker-right { width: 108px; top: 150px; }
-}
 @media (max-width: 860px) {
-  .hero-stickers { display: none; }
   .sticker-about { width: 108px; right: 24px; top: 96px; }
   .about-hero .lede { max-width: 100%; }
   .about-hero h1, .about-hero .eyebrow { padding-right: 120px; }
@@ -973,4 +962,22 @@ h1, h2, h3, h4, p { margin: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .polaroid { transition: none; }
+}
+
+/* Stickers hugging the hero title: one beside "구예빈의", one beside "포트폴리오" */
+.hero-title .ht { position: relative; display: inline-block; }
+.hero-title .sticker { top: 50%; z-index: -1; }
+.sticker-left  { width: 92px; right: calc(100% + 18px); transform: translateY(-58%) rotate(-8deg); }
+.sticker-right { width: 66px; left: calc(100% + 16px); transform: translateY(-50%) rotate(7deg); }
+.sticker-left:hover  { transform: translateY(-58%) rotate(-4deg) scale(1.06); }
+.sticker-right:hover { transform: translateY(-50%) rotate(3deg) scale(1.06); }
+.hero-title .sticker .tape { width: 46px; height: 16px; margin-left: -23px; top: -7px; }
+
+@media (max-width: 620px) {
+  /* Two lines on phones so each sticker gets room beside its line */
+  .hero-title .ht { display: block; width: fit-content; margin: 0 auto; }
+  .sticker-left  { width: 64px; right: calc(100% + 12px); transform: translateY(-36%) rotate(-8deg); }
+  .sticker-left:hover { transform: translateY(-36%) rotate(-4deg) scale(1.06); }
+  .sticker-right { width: 46px; left: calc(100% + 12px); }
+  .hero-title .sticker .tape { width: 34px; height: 12px; margin-left: -17px; top: -5px; }
 }

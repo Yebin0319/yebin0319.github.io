@@ -3,8 +3,8 @@
   "configurations": [
     {
       "name": "portfolio-static",
-      "runtimeExecutable": "python",
-      "runtimeArgs": ["-m", "http.server", "4173"],
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["-y", "http-server", "-p", "4173", "-c-1", "--silent"],
       "port": 4173
     }
   ]
