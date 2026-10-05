@@ -713,7 +713,7 @@ h1, h2, h3, h4, p { margin: 0; }
 /* ==========================================================================
    About page
    ========================================================================== */
-.about-hero { padding: 148px 0 20px; }
+.about-hero { padding: 148px 28px 20px; }
 .about-hero h1 { font-size: clamp(32px, 5vw, 46px); font-weight: 800; letter-spacing: -0.02em; }
 .about-hero .lede { color: var(--text-dim); font-size: 16px; margin-top: 14px; max-width: 620px; }
 
@@ -883,3 +883,94 @@ h1, h2, h3, h4, p { margin: 0; }
 .mobile-menu a { display: block; padding: 16px 4px; font-size: 18px; font-weight: 700; border-bottom: 1px solid var(--border-soft); }
 .mobile-menu .mm-sub { padding-left: 16px; }
 .mobile-menu .mm-sub a { font-size: 15px; font-weight: 600; color: var(--text-dim); padding: 12px 4px; }
+
+/* ---------------- Diary stickers ---------------- */
+.hero { position: relative; overflow: hidden; }
+.hero-stickers { position: absolute; inset: 0; pointer-events: none; }
+.sticker {
+  position: absolute;
+  margin: 0;
+  pointer-events: auto;
+  filter: drop-shadow(0 10px 14px rgba(51,54,42,0.18)) drop-shadow(0 2px 3px rgba(51,54,42,0.12));
+  transition: transform .35s cubic-bezier(.3,1.5,.5,1);
+}
+.sticker img { display: block; width: 100%; height: auto; }
+.tape {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  z-index: 1;
+  width: 92px;
+  height: 26px;
+  margin-left: -46px;
+  background: rgba(162,171,115,0.55);
+  transform: rotate(-4deg);
+  /* zig-zag torn ends like washi tape */
+  -webkit-mask: conic-gradient(from -45deg at left, #0000 25%, #000 0) left / 51% 8px repeat-y,
+                conic-gradient(from 135deg at right, #0000 25%, #000 0) right / 51% 8px repeat-y;
+          mask: conic-gradient(from -45deg at left, #0000 25%, #000 0) left / 51% 8px repeat-y,
+                conic-gradient(from 135deg at right, #0000 25%, #000 0) right / 51% 8px repeat-y;
+}
+.tape.tape-pink { background: rgba(229,139,163,0.55); transform: rotate(5deg); }
+
+.sticker-left  { width: 210px; left: max(12px, calc(50% - 640px)); top: 150px; transform: rotate(-7deg); }
+.sticker-right { width: 150px; right: max(12px, calc(50% - 620px)); top: 190px; transform: rotate(6deg); }
+.sticker-left:hover  { transform: rotate(-3deg) scale(1.04); }
+.sticker-right:hover { transform: rotate(2deg) scale(1.04); }
+
+.about-hero { position: relative; }
+.sticker-about { width: 190px; right: 40px; top: 118px; transform: rotate(5deg); }
+.sticker-about:hover { transform: rotate(1deg) scale(1.04); }
+.about-hero .lede { max-width: min(620px, calc(100% - 240px)); }
+
+@media (max-width: 1100px) {
+  .sticker-left  { width: 150px; top: 120px; }
+  .sticker-right { width: 108px; top: 150px; }
+}
+@media (max-width: 860px) {
+  .hero-stickers { display: none; }
+  .sticker-about { width: 108px; right: 24px; top: 96px; }
+  .about-hero .lede { max-width: 100%; }
+  .about-hero h1, .about-hero .eyebrow { padding-right: 120px; }
+  .about-hero h1 { word-break: keep-all; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sticker { transition: none; }
+}
+
+/* Award photos as taped polaroids */
+.polaroid-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 36px 48px;
+  margin-top: 48px;
+}
+.polaroid {
+  position: relative;
+  width: min(340px, 100%);
+  margin: 0;
+  padding: 12px 12px 0;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 18px 34px -18px rgba(51,54,42,0.35), 0 3px 8px -4px rgba(51,54,42,0.18);
+  transition: transform .35s cubic-bezier(.3,1.5,.5,1);
+}
+.polaroid img { display: block; width: 100%; height: auto; aspect-ratio: 6 / 5; object-fit: cover; border-radius: 2px; }
+.polaroid figcaption {
+  padding: 12px 4px 14px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--text-dim);
+}
+.polaroid .tape { top: -12px; }
+.polaroid-l { transform: rotate(-3deg); }
+.polaroid-r { transform: rotate(2.5deg); margin-top: 18px; }
+.polaroid-l:hover { transform: rotate(-1deg) scale(1.03); }
+.polaroid-r:hover { transform: rotate(1deg) scale(1.03); }
+@media (max-width: 620px) {
+  .polaroid-r { margin-top: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .polaroid { transition: none; }
+}
