@@ -6,7 +6,7 @@
   if (!overlay || !root.classList.contains('has-intro')) return;
   var canvas = overlay.querySelector('canvas');
 
-  var AUTO_MS = 4200;
+  var AUTO_MS = 2200;
   var done = false;
   var timer = 0;
   var raf = 0;
@@ -23,7 +23,7 @@
       root.classList.remove('has-intro');
       overlay.remove();
       cancelAnimationFrame(raf);
-    }, 1000);
+    }, 700);
     ['wheel', 'touchmove', 'keydown'].forEach(function (t) { window.removeEventListener(t, onUser); });
   }
   function onUser(e) {
