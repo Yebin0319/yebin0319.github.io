@@ -104,7 +104,7 @@
     var bob = Math.sin(t * 1.6) * 4;
     if (imgs.length > 1 && now > nextSwap) swap();
 
-    tilt.style.transform = 'translate(' + (cx * 12).toFixed(1) + 'px,' + (bob + cy * 6).toFixed(1) + 'px) rotateY(' + (cx * 14).toFixed(2) + 'deg) rotateX(' + (-cy * 8).toFixed(2) + 'deg) rotateZ(' + (cx * 2.5).toFixed(2) + 'deg)';
+    tilt.style.transform = 'translateY(' + bob.toFixed(1) + 'px)';
     for (var d = 0; d < decos.length; d++) {
       decos[d].style.transform = 'translate(' + (-cx * (10 + d * 5)).toFixed(1) + 'px,' + (-cy * (6 + d * 3)).toFixed(1) + 'px)';
     }
