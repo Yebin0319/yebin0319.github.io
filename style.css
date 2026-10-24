@@ -1014,15 +1014,13 @@ h1, h2, h3, h4, p { margin: 0; }
 @keyframes gi-pulse { 50% { opacity: .55; } }
 @keyframes gi-wheel { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(7px); opacity: 0; } }
 
-.has-intro .hero-text > * { opacity: 0; }
-.intro-done .hero-text > * { animation: hero-in .65s cubic-bezier(.2,.8,.2,1) both; }
-.intro-done .hero-text > :nth-child(2) { animation-delay: .06s; }
-.intro-done .hero-text > :nth-child(3) { animation-delay: .12s; }
-.intro-done .hero-text > :nth-child(4) { animation-delay: .18s; }
+.has-intro .hero-text > :not(.hero-title), .has-intro .hero-title .sticker { opacity: 0; }
+.intro-done .hero-text > :not(.hero-title) { animation: hero-in .65s cubic-bezier(.2,.8,.2,1) both; }
+.intro-done .hero-text > :not(.hero-title):nth-child(2) { animation-delay: .06s; }
+.intro-done .hero-text > :not(.hero-title):nth-child(3) { animation-delay: .12s; }
+.intro-done .hero-text > :not(.hero-title):nth-child(4) { animation-delay: .18s; }
 @keyframes hero-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .glass-intro { display: none !important; } }
 .intro-done .hero-title .sticker { animation: sticker-pop .7s cubic-bezier(.3,1.5,.5,1) .15s both; }
 .intro-done .hero-title .sticker-right { animation-delay: .25s; }
 @keyframes sticker-pop { from { opacity: 0; scale: .4; translate: 0 30px; } to { opacity: 1; scale: 1; translate: 0 0; } }
-.intro-done .hero-title { animation-name: hero-in-blur; }
-@keyframes hero-in-blur { from { opacity: 0; transform: scale(1.08); filter: blur(8px); } to { opacity: 1; transform: none; filter: none; } }

@@ -154,30 +154,47 @@
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, c);
   })();
 
-  var vw = 1, vh = 1, dpr = 1, plateReady = false;
+  var titleY = 0, vw = 1, vh = 1, dpr = 1, plateReady = false;
 
   function cssVar(n, fb) { return getComputedStyle(root).getPropertyValue(n).trim() || fb; }
 
+  // Draw the title exactly where the hero <h1> sits, so the glass dissolves straight into the real hero.
   function bakePlate() {
     var c = document.createElement('canvas'); c.width = vw; c.height = vh;
     var x = c.getContext('2d');
     x.fillStyle = cssVar('--bg', '#fff7eb'); x.fillRect(0, 0, vw, vh);
-    x.textAlign = 'center'; x.textBaseline = 'middle';
-    var fam = "'Griun Gowoon', sans-serif";
-    var big = Math.min(vw * 0.2, vh * 0.34);
-    x.font = '700 ' + big + 'px ' + fam;
-    x.fillStyle = cssVar('--text', '#33362a');
-    x.fillText('구예빈의', vw / 2, vh / 2 - big * 0.05);
-    x.fillStyle = cssVar('--accent-2', '#cc3a63');
-    x.font = '700 ' + big + 'px ' + fam;
-    x.fillText('포트폴리오', vw / 2, vh / 2 + big * 1.0);
-    var sm = Math.max(11 * dpr, big * 0.1);
-    x.font = '500 ' + sm + 'px ' + "'JetBrains Mono', monospace";
-    x.fillStyle = cssVar('--accent', '#a2ab73');
-    x.fillText('— BACKEND DEVELOPER —', vw / 2, vh / 2 - big * 0.95);
+    var h1 = document.querySelector('.hero-title');
+    var cs = getComputedStyle(h1);
+    x.font = cs.fontWeight + ' ' + (parseFloat(cs.fontSize) * dpr) + "px 'Griun Gowoon', sans-serif";
+    x.textAlign = 'left'; x.textBaseline = 'middle';
+    if ('letterSpacing' in x) x.letterSpacing = (parseFloat(cs.letterSpacing) || 0) * dpr + 'px';
+    var parts = h1.querySelectorAll('.ht');
+    for (var i = 0; i < parts.length; i++) {
+      var r = parts[i].getBoundingClientRect();
+      var txt = parts[i].textContent;
+      var left = r.left * dpr, mid = (r.top + r.height / 2) * dpr;
+      if (i === 0) x.fillStyle = cssVar('--text', '#33362a');
+      else {
+        var g = x.createLinearGradient(left, 0, (r.right) * dpr, 0);
+        g.addColorStop(0, cssVar('--accent-2', '#cc3a63')); g.addColorStop(1, cssVar('--accent-3', '#e58ba3'));
+        x.fillStyle = g;
+      }
+      x.fillText(txt, left, mid);
+    }
+    var eb = document.querySelector('.hero .eyebrow');
+    if (eb) {
+      var er = eb.getBoundingClientRect(), ecs = getComputedStyle(eb);
+      x.font = ecs.fontWeight + ' ' + (parseFloat(ecs.fontSize) * dpr) + 'px ' + ecs.fontFamily;
+      if ('letterSpacing' in x) x.letterSpacing = (parseFloat(ecs.letterSpacing) || 0) * dpr + 'px';
+      x.fillStyle = cssVar('--accent', '#a2ab73');
+      x.textAlign = 'center';
+      x.fillText('BACKEND DEVELOPER', (er.left + er.width / 2 + 20) * dpr, (er.top + er.height / 2) * dpr);
+    }
     gl.bindTexture(gl.TEXTURE_2D, plateTex);
     gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, 1);
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, c);
+    var tr = h1.getBoundingClientRect();
+    titleY = 1 - 2 * ((tr.top + tr.height / 2) / window.innerHeight);
     plateReady = true;
   }
 
@@ -221,13 +238,13 @@
     baseYaw += spin * 0.5 * dt; basePitch += spin * 0.2 * dt;
 
     var yaw = baseYaw + tiltX;
-    var pitch = Math.max(-1.45, Math.min(1.45, basePitch - tiltY)) + 100 * DEG;
+    var pitch = Math.max(-1.45, Math.min(1.45, basePitch - tiltY)) + 20 * DEG;
     var rot = rotYX(yaw, pitch), rotT = transpose(rot);
 
     var halfFrame = CAM * Math.tan(FOV / 2);
     var tube = 0.16;
     var refHalf = 0.8 + tube;
-    var sizePct = vw / vh < 0.8 ? 70 : 60;
+    var sizePct = vw / vh < 0.8 ? 70 : 52;
     var scale = (sizePct / 100) * halfFrame / refHalf;
     var aspect = vw / vh;
 
@@ -249,7 +266,7 @@
     gl.uniform1f(ug.uTanHalf, Math.tan(FOV / 2));
     gl.uniformMatrix3fv(ug.uRot, false, rot);
     gl.uniformMatrix3fv(ug.uRotT, false, rotT);
-    gl.uniform3f(ug.uCenter, 0, Math.sin(elapsed * 2) * 0.05, -CAM);
+    gl.uniform3f(ug.uCenter, 0, titleY * halfFrame + Math.sin(elapsed * 2) * 0.05, -CAM);
     gl.uniform1f(ug.uScale, scale);
     gl.uniform1f(ug.uBoundR, refHalf);
     gl.uniform1f(ug.uTube, tube);
