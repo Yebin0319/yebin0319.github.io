@@ -5,9 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>구예빈의 포트폴리오</title>
 <meta name="description" content="한국외국어대학교 컴퓨터공학부 구예빈의 백엔드 개발 포트폴리오입니다.">
-<link rel="stylesheet" href="style.css?v=20261005b">
+<link rel="stylesheet" href="style.css?v=20261026a">
+<script>
+(function(){try{
+  var d=document.documentElement;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches||sessionStorage.getItem('glassIntroSeen')||location.hash||window.scrollY>10)return;
+  d.classList.add('has-intro');
+  setTimeout(function(){d.classList.remove('has-intro')},8000);
+}catch(e){}})();
+</script>
 </head>
 <body>
+
+<div class="glass-intro" aria-hidden="true">
+  <canvas></canvas>
+  <div class="gi-hint"><span class="gi-mouse"></span>스크롤하거나 잠시 기다려 주세요</div>
+</div>
 
 <nav class="navbar">
   <div class="nav-inner">
@@ -270,6 +283,7 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261005b"></script>
+<script src="main.js?v=20261026a"></script>
+<script src="glass-intro.js?v=20261026a" defer></script>
 </body>
 </html>

@@ -991,3 +991,33 @@ h1, h2, h3, h4, p { margin: 0; }
   .sticker-right { width: 46px; left: calc(100% + 12px); }
   .hero-title .sticker .tape { width: 34px; height: 12px; margin-left: -17px; top: -5px; }
 }
+
+/* ---------------- Glass intro ---------------- */
+.glass-intro { display: none; }
+.has-intro, .has-intro body { overflow: hidden; }
+.has-intro .glass-intro {
+  display: block; position: fixed; inset: 0; z-index: 9999;
+  background: var(--bg); cursor: pointer;
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1), filter .9s ease;
+}
+.glass-intro canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .6s ease; }
+.glass-intro.gi-ready canvas { opacity: 1; }
+.glass-intro.gi-out { opacity: 0; transform: scale(1.06); filter: blur(10px); pointer-events: none; }
+.gi-hint {
+  position: absolute; left: 50%; bottom: 36px; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 10px; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; color: var(--text-faint);
+  animation: gi-pulse 2s ease-in-out infinite;
+}
+.gi-mouse { width: 14px; height: 22px; border: 1.5px solid currentColor; border-radius: 8px; position: relative; }
+.gi-mouse::after { content: ''; position: absolute; left: 50%; top: 4px; width: 2px; height: 4px; margin-left: -1px; background: currentColor; border-radius: 1px; animation: gi-wheel 1.4s ease-in-out infinite; }
+@keyframes gi-pulse { 50% { opacity: .55; } }
+@keyframes gi-wheel { 0% { transform: translateY(0); opacity: 1; } 100% { transform: translateY(7px); opacity: 0; } }
+
+.has-intro .hero-text > * { opacity: 0; }
+.intro-done .hero-text > * { animation: hero-in .9s cubic-bezier(.2,.7,.2,1) both; }
+.intro-done .hero-text > :nth-child(2) { animation-delay: .12s; }
+.intro-done .hero-text > :nth-child(3) { animation-delay: .24s; }
+.intro-done .hero-text > :nth-child(4) { animation-delay: .36s; }
+@keyframes hero-in { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .glass-intro { display: none !important; } }
