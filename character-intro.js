@@ -29,10 +29,19 @@
     finish();
   }
   ['wheel', 'touchmove', 'keydown'].forEach(function (t) { window.addEventListener(t, onUser, { passive: true }); });
-  overlay.addEventListener('click', finish);
+  // Add more Memoji stickers (transparent PNGs, upper body) to assets/img/memoji/ and list them here.
+  var MEMOJIS = ['assets/img/memoji.png'];
+  var tilt = overlay.querySelector('.ci-tilt'), shots = [], cur = 0, nextSwap = 0;
+  MEMOJIS.forEach(function (src, i) {
+    var im = new Image(); im.className = 'ci-memoji' + (i ? '' : ' on'); im.alt = ''; im.draggable = false; im.src = src;
+    tilt.appendChild(im); shots.push(im);
+  });
+  function show(i) { shots[cur].classList.remove('on'); cur = i; shots[cur].classList.add('on'); }
+  function next() { if (shots.length > 1) show((cur + 1 + Math.floor(Math.random() * (shots.length - 1))) % shots.length); }
+  overlay.addEventListener('click', function (e) { if (e.target.classList.contains('ci-memoji')) { next(); nextSwap = performance.now() + 3500; } else finish(); });
   timer = setTimeout(finish, AUTO_MS);
 
-  var img = overlay.querySelector('.ci-memoji'), shadow = overlay.querySelector('.ci-shadow');
+  var shadow = overlay.querySelector('.ci-shadow');
   var decos = overlay.querySelectorAll('.ci-deco');
   var tx = 0, ty = 0, cx = 0, cy = 0, lastMove = -1e9;
   window.addEventListener('pointermove', function (e) {
@@ -53,7 +62,8 @@
     cx += (gx - cx) * k; cy += (gy - cy) * k;
     var bob = Math.sin(t * 1.6) * 6;
     // the head leans toward the cursor in 3D
-    img.style.transform = 'translate(' + (cx * 14).toFixed(1) + 'px,' + (bob + cy * 8).toFixed(1) + 'px) rotateY(' + (cx * 16).toFixed(2) + 'deg) rotateX(' + (-cy * 10).toFixed(2) + 'deg) rotateZ(' + (cx * 3).toFixed(2) + 'deg)';
+    if (shots.length > 1 && now > nextSwap) { if (nextSwap) next(); nextSwap = now + 2600; }
+    tilt.style.transform = 'translate(' + (cx * 14).toFixed(1) + 'px,' + (bob + cy * 8).toFixed(1) + 'px) rotateY(' + (cx * 16).toFixed(2) + 'deg) rotateX(' + (-cy * 10).toFixed(2) + 'deg) rotateZ(' + (cx * 3).toFixed(2) + 'deg)';
     shadow.style.transform = 'translateX(' + (cx * 10).toFixed(1) + 'px) scaleX(' + (1 - Math.abs(bob) * 0.01).toFixed(3) + ')';
     for (var d = 0; d < decos.length; d++) {
       decos[d].style.transform = 'translate(' + (-cx * (10 + d * 5)).toFixed(1) + 'px,' + (-cy * (6 + d * 3)).toFixed(1) + 'px)';
