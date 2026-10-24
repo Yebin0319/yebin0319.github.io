@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>구예빈의 포트폴리오</title>
 <meta name="description" content="한국외국어대학교 컴퓨터공학부 구예빈의 백엔드 개발 포트폴리오입니다.">
-<link rel="stylesheet" href="style.css?v=20261026q">
+<link rel="stylesheet" href="style.css?v=20261026s">
 <script>
 (function(){try{
   var d=document.documentElement;
@@ -20,7 +20,101 @@
 <div class="char-intro" aria-hidden="true">
   <div class="ci-blob ci-b1"></div><div class="ci-blob ci-b2"></div><div class="ci-blob ci-b3"></div>
   <div class="ci-deco ci-d1"></div><div class="ci-deco ci-d2"></div><div class="ci-deco ci-d3"></div><div class="ci-deco ci-d4"></div><div class="ci-deco ci-d5"></div><div class="ci-deco ci-d6"></div>
-  <div class="ci-stage"><div class="ci-shadow"></div><div class="ci-tilt"></div></div>
+  <div class="ci-stage">
+  <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="skinG" cx="46%" cy="34%" r="72%"><stop offset="0" stop-color="#ffeedd"/><stop offset=".55" stop-color="#fbdcc3"/><stop offset="1" stop-color="#eab596"/></radialGradient>
+      <linearGradient id="hairG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#34323a"/><stop offset=".5" stop-color="#1a191e"/><stop offset="1" stop-color="#0b0a0d"/></linearGradient>
+      <linearGradient id="shirtG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffdce5"/><stop offset="1" stop-color="#f2a6bb"/></linearGradient>
+      <linearGradient id="sleeveG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f6b7c8"/><stop offset="1" stop-color="#ffdce5"/></linearGradient>
+      <radialGradient id="irisG" cx="50%" cy="62%" r="62%"><stop offset="0" stop-color="#c58a55"/><stop offset=".55" stop-color="#7a4a2b"/><stop offset="1" stop-color="#2e180d"/></radialGradient>
+      <filter id="b4" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="4"/></filter>
+      <filter id="b8" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="8"/></filter>
+      <clipPath id="headClip"><path d="M88 175C88 100 140 64 200 64s112 36 112 111c0 55-42 117-97 129q-15 4-30 0C130 292 88 230 88 175Z"/></clipPath>
+      <clipPath id="mouthClip"><path d="M176 262q24-8 48 0q-2 32-24 32t-24-32Z"/></clipPath>
+    </defs>
+    <ellipse cx="200" cy="494" rx="160" ry="12" fill="#cc3a63" opacity=".10"/>
+
+    <g id="cTail">
+      <ellipse cx="268" cy="70" rx="38" ry="30" fill="url(#hairG)"/>
+      <path d="M262 84C336 96 360 190 340 290c-8 40-30 72-42 108 4-52 6-86 0-124-6-62-22-120-60-150Z" fill="url(#hairG)"/>
+      <path d="M300 120c22 38 26 96 14 150" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none" opacity=".14" filter="url(#b4)"/>
+    </g>
+    <g id="cHairBack"><ellipse cx="200" cy="160" rx="122" ry="116" fill="url(#hairG)"/></g>
+
+    <g id="cBody">
+      <path d="M40 500C36 408 82 352 200 342s164 66 160 158Z" fill="url(#shirtG)"/>
+      <path d="M44 500C40 446 54 410 78 386l22 114Z" fill="url(#sleeveG)" opacity=".55"/>
+      <path d="M356 500C360 446 346 410 322 386l-22 114Z" fill="url(#sleeveG)" opacity=".55"/>
+      <path d="M148 350q52 56 104 0q-52-18-104 0Z" fill="#f1c4aa"/>
+      <path d="M142 348q58 64 116 0" stroke="#fff4f7" stroke-width="10" stroke-linecap="round" fill="none"/>
+      <path d="M70 430c18-40 58-64 100-72" stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none" opacity=".28" filter="url(#b4)"/>
+      <circle cx="200" cy="440" r="5" fill="#fff" opacity=".8"/><circle cx="200" cy="470" r="5" fill="#fff" opacity=".8"/>
+    </g>
+    <g id="cNeck">
+      <path d="M172 280h56v76c-18 18-38 18-56 0Z" fill="#f0c3a5"/>
+      <ellipse cx="200" cy="302" rx="38" ry="14" fill="#d79d7e" opacity=".55" filter="url(#b4)"/>
+    </g>
+    <g id="cLocks">
+      <path d="M94 190c-6 30-4 62 6 84 10-14 14-38 14-66Z" fill="url(#hairG)"/>
+      <path d="M306 190c6 30 4 62-6 84-10-14-14-38-14-66Z" fill="url(#hairG)"/>
+    </g>
+
+    <g id="cHead">
+      <ellipse cx="86" cy="202" rx="14" ry="23" fill="#f3c3a4"/><ellipse cx="86" cy="204" rx="7" ry="13" fill="#d99c7e" opacity=".6"/>
+      <ellipse cx="314" cy="202" rx="14" ry="23" fill="#f3c3a4"/><ellipse cx="314" cy="204" rx="7" ry="13" fill="#d99c7e" opacity=".6"/>
+      <path d="M88 175C88 100 140 64 200 64s112 36 112 111c0 55-42 117-97 129q-15 4-30 0C130 292 88 230 88 175Z" fill="url(#skinG)"/>
+      <g clip-path="url(#headClip)">
+        <ellipse cx="200" cy="162" rx="112" ry="26" fill="#c98f6f" opacity=".5" filter="url(#b8)"/>
+        <ellipse cx="200" cy="300" rx="80" ry="22" fill="#e0a283" opacity=".5" filter="url(#b8)"/>
+        <ellipse cx="108" cy="230" rx="22" ry="42" fill="#e4a98a" opacity=".35" filter="url(#b8)"/>
+        <ellipse cx="292" cy="230" rx="22" ry="42" fill="#e4a98a" opacity=".35" filter="url(#b8)"/>
+      </g>
+
+      <g id="cFace">
+        <ellipse id="cBlush1" cx="136" cy="250" rx="28" ry="17" fill="#ff7f98" opacity=".5" filter="url(#b4)"/>
+        <ellipse id="cBlush2" cx="264" cy="250" rx="28" ry="17" fill="#ff7f98" opacity=".5" filter="url(#b4)"/>
+        <g id="cBrows" stroke="#3a2f2c" stroke-width="6" stroke-linecap="round" fill="none"><path d="M136 184q24-12 48-3"/><path d="M216 181q24-9 48 3"/></g>
+
+        <!-- eyes: one group per state, toggled by script -->
+        <g id="cEyeL" data-cx="160">
+          <g data-s="open"><ellipse cx="160" cy="214" rx="20" ry="18" fill="#fffaf6"/><ellipse cx="160" cy="204" rx="20" ry="9" fill="#d9b9a6" opacity=".35" filter="url(#b4)"/><g class="iris"><circle cx="160" cy="215" r="15" fill="url(#irisG)"/><circle cx="160" cy="215" r="14" fill="none" stroke="#2a170d" stroke-width="2.5"/><circle cx="160" cy="215" r="7.6" fill="#0e0807"/><ellipse cx="165" cy="209" rx="5.2" ry="5.6" fill="#fff"/><circle cx="154.5" cy="221" r="2.6" fill="#fff" opacity=".85"/></g><path d="M138 208q22-20 44 0" stroke="#150e0c" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M140 208l-6-5" stroke="#150e0c" stroke-width="4" stroke-linecap="round"/></g>
+          <g data-s="wide"><ellipse cx="160" cy="214" rx="19" ry="16" fill="#fbf6f1"/><g class="iris"><circle cx="160" cy="214" r="12" fill="url(#irisG)"/><circle cx="160" cy="214" r="6.4" fill="#120b08"/><circle cx="165" cy="208" r="4" fill="#fff"/></g><path d="M139 208q21-16 42 0" stroke="#1a1210" stroke-width="5" stroke-linecap="round" fill="none"/></g>
+          <g data-s="happy"><path d="M142 218q18-22 36 0" stroke="#1a1210" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+          <g data-s="wink"><path d="M142 212q18 14 36 0" stroke="#1a1210" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+          <g data-s="heart"><path d="M160 228c-18-12-22-22-14-30 6-5 12-3 14 3 2-6 8-8 14-3 8 8 4 18-14 30Z" fill="#ff5f8a"/><circle cx="153" cy="204" r="3" fill="#fff" opacity=".7"/></g>
+        </g>
+        <g id="cEyeR" data-cx="240">
+          <g data-s="open"><ellipse cx="240" cy="214" rx="20" ry="18" fill="#fffaf6"/><ellipse cx="240" cy="204" rx="20" ry="9" fill="#d9b9a6" opacity=".35" filter="url(#b4)"/><g class="iris"><circle cx="240" cy="215" r="15" fill="url(#irisG)"/><circle cx="240" cy="215" r="14" fill="none" stroke="#2a170d" stroke-width="2.5"/><circle cx="240" cy="215" r="7.6" fill="#0e0807"/><ellipse cx="245" cy="209" rx="5.2" ry="5.6" fill="#fff"/><circle cx="234.5" cy="221" r="2.6" fill="#fff" opacity=".85"/></g><path d="M218 208q22-20 44 0" stroke="#150e0c" stroke-width="6" stroke-linecap="round" fill="none"/><path d="M260 208l6-5" stroke="#150e0c" stroke-width="4" stroke-linecap="round"/></g>
+          <g data-s="wide"><ellipse cx="240" cy="214" rx="19" ry="16" fill="#fbf6f1"/><g class="iris"><circle cx="240" cy="214" r="12" fill="url(#irisG)"/><circle cx="240" cy="214" r="6.4" fill="#120b08"/><circle cx="245" cy="208" r="4" fill="#fff"/></g><path d="M219 208q21-16 42 0" stroke="#1a1210" stroke-width="5" stroke-linecap="round" fill="none"/></g>
+          <g data-s="happy"><path d="M222 218q18-22 36 0" stroke="#1a1210" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+          <g data-s="wink"><path d="M222 212q18 14 36 0" stroke="#1a1210" stroke-width="6" stroke-linecap="round" fill="none"/></g>
+          <g data-s="heart"><path d="M240 228c-18-12-22-22-14-30 6-5 12-3 14 3 2-6 8-8 14-3 8 8 4 18-14 30Z" fill="#ff5f8a"/><circle cx="233" cy="204" r="3" fill="#fff" opacity=".7"/></g>
+        </g>
+
+        <ellipse cx="203" cy="238" rx="11" ry="8" fill="#dc9a7c" opacity=".5" filter="url(#b4)"/>
+        <ellipse cx="200" cy="234" rx="6" ry="4" fill="#fff" opacity=".4" filter="url(#b4)"/>
+
+        <ellipse cx="200" cy="296" rx="22" ry="7" fill="#fff" opacity=".28" filter="url(#b4)"/>
+        <g id="cMouth">
+          <g data-s="smile"><path d="M181 268q19-7 38 0q-19 17-38 0Z" fill="#b95f5f"/><path d="M184 270q16 9 32 0q-16 12-32 0Z" fill="#d98b86"/><path d="M190 273q10 4 20 0" stroke="#fff" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".5"/><path d="M178 266q-4-2-5-6M222 266q4-2 5-6" stroke="#d29078" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+          <g data-s="smirk"><path d="M182 272q18 4 40-10q-6 20-40 10Z" fill="#b95f5f"/><path d="M186 274q16 4 32-6q-8 14-32 6Z" fill="#d98b86"/><path d="M224 262q5-2 6-7" stroke="#d29078" stroke-width="2.5" stroke-linecap="round" fill="none"/></g>
+          <g data-s="laugh"><path d="M176 262q24-8 48 0q-2 32-24 32t-24-32Z" fill="#7a2f3a"/><g clip-path="url(#mouthClip)"><path d="M174 258h52v10q-26 4-52 0Z" fill="#fff"/><ellipse cx="200" cy="292" rx="16" ry="10" fill="#f08a95"/></g><path d="M176 262q24-8 48 0" stroke="#b95f5f" stroke-width="4" stroke-linecap="round" fill="none"/></g>
+          <g data-s="o"><ellipse cx="200" cy="274" rx="9" ry="11" fill="#7a2f3a"/><ellipse cx="200" cy="274" rx="9" ry="11" fill="none" stroke="#c4666a" stroke-width="3"/><ellipse cx="200" cy="280" rx="5" ry="4" fill="#f08a95"/></g>
+          <g data-s="cat"><path d="M184 266q8 11 16 0q8 11 16 0" stroke="#b5565a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+        </g>
+      </g>
+
+      <g id="cBangs">
+        <path d="M80 214C64 100 132 38 200 38s136 62 120 176l-20 6c2-26-2-46-8-66-10 4-22 4-34 0-20 6-44 6-66 0-12 4-24 4-34 0-6 20-10 40-8 66Z" fill="url(#hairG)"/>
+        <path d="M112 156c0 18-2 30-4 42M152 160c-1 14-2 24-4 34M200 162v28M248 160c1 14 2 24 4 34M288 156c0 18 2 30 4 42" stroke="#000" stroke-width="2.5" stroke-linecap="round" fill="none" opacity=".3"/>
+        <path d="M96 150C92 110 112 74 150 56" stroke="#9aa6ff" stroke-width="5" stroke-linecap="round" fill="none" opacity=".25" filter="url(#b4)"/><ellipse cx="150" cy="82" rx="58" ry="14" transform="rotate(-14 150 82)" fill="#fff" opacity=".2" filter="url(#b4)"/>
+        <ellipse cx="262" cy="96" rx="34" ry="9" transform="rotate(16 262 96)" fill="#fff" opacity=".12" filter="url(#b4)"/>
+      </g>
+    </g>
+  </svg>
+  <div class="ci-fx"></div>
+</div>
   <div class="ci-hello"><span>안녕하세요!</span> 백엔드 개발자 <b>구예빈</b>입니다</div>
   <div class="gi-hint"><span class="gi-mouse"></span>스크롤하거나 클릭해서 입장하기</div>
 </div>
@@ -286,7 +380,7 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261026q"></script>
-<script src="character-intro.js?v=20261026q" defer></script>
+<script src="main.js?v=20261026s"></script>
+<script src="character-intro.js?v=20261026s" defer></script>
 </body>
 </html>
