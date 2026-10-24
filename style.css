@@ -1053,3 +1053,18 @@ h1, h2, h3, h4, p { margin: 0; }
 .intro-done .hero-title .sticker-right { animation-delay: .25s; }
 @keyframes sticker-pop { from { opacity: 0; scale: .4; translate: 0 30px; } to { opacity: 1; scale: 1; translate: 0 0; } }
 @media (prefers-reduced-motion: reduce) { .char-intro { display: none !important; } }
+
+/* ---------------- Character decorations ---------------- */
+.deco-char { margin: 0; flex: 0 0 auto; }
+.deco-char img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.deco-coffee { width: clamp(170px, 22vw, 260px); aspect-ratio: 1 / .82; overflow: hidden; margin-bottom: -18px;
+  -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); filter: drop-shadow(0 14px 18px rgba(90,60,70,.18)); }
+.deco-coffee img { object-position: 50% 0; }
+.deco-desk { width: clamp(200px, 26vw, 320px); aspect-ratio: 4 / 3; border-radius: 28px; overflow: hidden; transform: rotate(2deg);
+  box-shadow: 0 24px 50px -20px rgba(60,40,50,.45), 0 0 0 6px #fff; margin-bottom: 4px; }
+.deco-desk img { object-position: 62% 30%; }
+@media (max-width: 720px) {
+  .section-head { flex-direction: column; align-items: flex-start; }
+  .deco-coffee { width: 170px; margin: 0 0 -10px auto; }
+  .deco-desk { width: min(100%, 300px); margin: 6px auto 0; }
+}

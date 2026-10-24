@@ -1,6 +1,5 @@
-// Onboarding: my 3D character (cut-out renders) leans toward the cursor and swaps between poses.
-// Scroll / touch / key press (or a short delay) dissolves it into the hero; clicking the
-// character changes the pose, clicking elsewhere enters.
+// Onboarding: my 3D character render floats over a pastel backdrop.
+// Scroll / touch / click / key press (or a short delay) dissolves it into the hero.
 (function () {
   var root = document.documentElement;
   var overlay = document.querySelector('.char-intro');
@@ -34,8 +33,7 @@
   // Every pose is aligned by its eye line so faces stay put while the image swaps.
   // eye = midpoint between the eyes and the distance between them, in source pixels.
   var POSES = [
-    { file: 'assets/img/char/blazer-glasses.webp', w: 1024, h: 1024, mx: 512, my: 375, d: 175 },
-    { file: 'assets/img/char/blazer-coffee.webp',  w: 1024, h: 1024, mx: 538, my: 325, d: 153 }
+    { file: 'assets/img/char/blazer-glasses.webp', w: 1024, h: 1024, mx: 512, my: 375, d: 175 }
   ];
   var tilt = overlay.querySelector('.ci-tilt');
   var stage = overlay.querySelector('.ci-stage');
@@ -80,9 +78,7 @@
     burst();
     nextSwap = performance.now() + 3400;
   }
-  overlay.addEventListener('click', function (e) {
-    if (e.target.closest && e.target.closest('.ci-stage')) swap(); else finish();
-  });
+  overlay.addEventListener('click', finish);
 
   var tx = 0, ty = 0, cx = 0, cy = 0, lastMove = -1e9;
   window.addEventListener('pointermove', function (e) {
