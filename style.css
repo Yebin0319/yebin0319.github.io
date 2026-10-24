@@ -1024,3 +1024,10 @@ h1, h2, h3, h4, p { margin: 0; }
 .intro-done .hero-title .sticker { animation: sticker-pop .7s cubic-bezier(.3,1.5,.5,1) .15s both; }
 .intro-done .hero-title .sticker-right { animation-delay: .25s; }
 @keyframes sticker-pop { from { opacity: 0; scale: .4; translate: 0 30px; } to { opacity: 1; scale: 1; translate: 0 0; } }
+
+/* ---------------- Hero 3D avatar ---------------- */
+.hero-avatar { width: clamp(150px, 20vw, 210px); aspect-ratio: 205 / 263; margin: 0 auto 6px; opacity: 0; transition: opacity .5s ease; }
+.hero-avatar.ready { opacity: 1; }
+.hero-avatar canvas { width: 100%; height: 100%; display: block; }
+.hero-avatar.no-3d { display: none; }
+.hero { padding-top: 120px; }
