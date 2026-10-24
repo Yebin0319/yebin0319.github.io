@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>구예빈의 포트폴리오</title>
 <meta name="description" content="한국외국어대학교 컴퓨터공학부 구예빈의 백엔드 개발 포트폴리오입니다.">
-<link rel="stylesheet" href="style.css?v=20261026j">
+<link rel="stylesheet" href="style.css?v=20261026k">
 <script>
 (function(){try{
   var d=document.documentElement;
@@ -19,7 +19,46 @@
 
 <div class="char-intro" aria-hidden="true">
   <div class="ci-blob ci-b1"></div><div class="ci-blob ci-b2"></div><div class="ci-blob ci-b3"></div>
-  <canvas></canvas>
+  <div class="ci-deco ci-d1"></div><div class="ci-deco ci-d2"></div><div class="ci-deco ci-d3"></div><div class="ci-deco ci-d4"></div><div class="ci-deco ci-d5"></div><div class="ci-deco ci-d6"></div>
+  <div class="ci-stage">
+  <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="skinG" cx="50%" cy="38%" r="70%"><stop offset="0" stop-color="#ffe6d2"/><stop offset="1" stop-color="#f6c9ad"/></radialGradient>
+      <linearGradient id="hairG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a262e"/><stop offset="1" stop-color="#0f0d12"/></linearGradient>
+      <linearGradient id="cardiG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3a3f58"/><stop offset="1" stop-color="#262a3e"/></linearGradient>
+    </defs>
+    <ellipse cx="200" cy="492" rx="150" ry="14" fill="#cc3a63" opacity=".10"/>
+    <g id="cHairBack"><path d="M72 190C56 92 130 40 200 40s146 52 128 150c8 80 14 140 4 214l-34-14c-8-46-12-92-18-130H120c-6 38-10 84-18 130l-34 14c-10-74-4-134 4-214Z" fill="url(#hairG)"/></g>
+    <g id="cBody">
+      <path d="M52 500C52 400 96 346 200 336s148 64 148 164Z" fill="url(#cardiG)"/>
+      <path d="M158 342 200 418 242 342Q200 330 158 342Z" fill="#ece8f0"/>
+      <path d="M158 342 200 418 176 500H120C122 440 134 372 158 342Z" fill="#303550"/>
+      <path d="M242 342 200 418 224 500h56C278 440 266 372 242 342Z" fill="#303550"/>
+      <path d="M196 424v76" stroke="#1f2335" stroke-width="2" opacity=".5"/>
+    </g>
+    <path id="cNeck" d="M176 286h48v62c-16 14-32 14-48 0Z" fill="#efc2a4"/>
+    <g id="cLocks">
+      <path d="M92 205c-14 80-16 140-6 196 22-4 40-22 46-52-12-44-18-90-18-144Z" fill="url(#hairG)"/>
+      <path d="M308 205c14 80 16 140 6 196-22-4-40-22-46-52 12-44 18-90 18-144Z" fill="url(#hairG)"/>
+    </g>
+    <g id="cHead">
+      <ellipse cx="88" cy="198" rx="13" ry="21" fill="#f6c9ad"/><ellipse cx="312" cy="198" rx="13" ry="21" fill="#f6c9ad"/>
+      <path d="M90 175C90 95 150 62 200 62s110 33 110 113c0 72-48 126-110 130-62-4-110-58-110-130Z" fill="url(#skinG)"/>
+      <g id="cFace">
+        <g stroke="#3a3232" stroke-width="5" stroke-linecap="round" fill="none"><path d="M138 184q22-9 42-2"/><path d="M220 182q20-7 42 2"/></g>
+        <g id="cEyeL"><ellipse cx="160" cy="214" rx="16" ry="12" fill="#fffaf5"/><circle id="cIrisL" cx="160" cy="214" r="10" fill="#4a3326"/><circle cx="160" cy="214" r="5.5" fill="#120d0b"/><circle cx="165" cy="209" r="3.4" fill="#fff"/></g>
+        <g id="cEyeR"><ellipse cx="240" cy="214" rx="16" ry="12" fill="#fffaf5"/><circle id="cIrisR" cx="240" cy="214" r="10" fill="#4a3326"/><circle cx="240" cy="214" r="5.5" fill="#120d0b"/><circle cx="245" cy="209" r="3.4" fill="#fff"/></g>
+        <path d="M195 238q5 7 10 0" stroke="#dc9f84" stroke-width="3" stroke-linecap="round" fill="none"/>
+        <path d="M180 262q20 16 40 0" stroke="#b5565a" stroke-width="5" stroke-linecap="round" fill="none"/>
+        <ellipse cx="138" cy="246" rx="17" ry="9" fill="#ff8fa8" opacity=".42"/><ellipse cx="262" cy="246" rx="17" ry="9" fill="#ff8fa8" opacity=".42"/>
+      </g>
+      <g id="cBangs">
+        <path d="M84 206C72 100 136 44 200 44s128 56 116 162l-16 0c2-26-2-40-8-56l-40 6-6-12-4 12-42 2-42-2-4-12-6 12-40-6c-6 16-10 30-8 56Z" fill="url(#hairG)"/>
+        <path d="M128 78c26-18 60-24 90-18" stroke="#fff" stroke-width="7" stroke-linecap="round" fill="none" opacity=".16"/>
+      </g>
+    </g>
+  </svg>
+  </div>
   <div class="ci-hello"><span>안녕하세요!</span> 백엔드 개발자 <b>구예빈</b>입니다</div>
   <div class="gi-hint"><span class="gi-mouse"></span>스크롤하거나 클릭해서 입장하기</div>
 </div>
@@ -285,8 +324,7 @@
   </div>
 </footer>
 
-<script src="main.js?v=20261026j"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
-<script src="character-intro.js?v=20261026j" defer></script>
+<script src="main.js?v=20261026k"></script>
+<script src="character-intro.js?v=20261026k" defer></script>
 </body>
 </html>
