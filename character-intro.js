@@ -32,15 +32,8 @@
   overlay.addEventListener('click', finish);
   timer = setTimeout(finish, AUTO_MS);
 
-  function $(id) { return document.getElementById(id); }
-  var L = {
-    hairBack: $('cHairBack'), tail: $('cTail'), body: $('cBody'), neck: $('cNeck'), locks: $('cLocks'),
-    head: $('cHead'), face: $('cFace'), bangs: $('cBangs'),
-    eyeL: $('cEyeL'), eyeR: $('cEyeR'), irisL: $('cIrisL'), irisR: $('cIrisR')
-  };
+  var img = overlay.querySelector('.ci-memoji'), shadow = overlay.querySelector('.ci-shadow');
   var decos = overlay.querySelectorAll('.ci-deco');
-  function set(el, x, y) { el.setAttribute('transform', 'translate(' + x.toFixed(2) + ' ' + y.toFixed(2) + ')'); }
-
   var tx = 0, ty = 0, cx = 0, cy = 0, lastMove = -1e9;
   window.addEventListener('pointermove', function (e) {
     tx = (e.clientX / window.innerWidth) * 2 - 1;
@@ -48,42 +41,20 @@
     lastMove = performance.now();
   }, { passive: true });
 
-  var prev = performance.now(), blinkAt = prev + 1800, blinkEnd = 0, winkSide = 0, lid = [1, 1];
+  var prev = performance.now();
   function frame(now) {
     raf = requestAnimationFrame(frame);
     var dt = Math.min((now - prev) / 1000, 0.05); prev = now;
     var t = now / 1000;
     var idle = now - lastMove > 2500;
-    var gx = idle ? Math.sin(t * 0.9) * 0.5 : tx;
-    var gy = idle ? Math.sin(t * 1.3) * 0.15 : ty * 0.8;
+    var gx = idle ? Math.sin(t * 0.9) * 0.45 : tx;
+    var gy = idle ? Math.sin(t * 1.3) * 0.12 : ty * 0.8;
     var k = 1 - Math.exp(-6 * dt);
     cx += (gx - cx) * k; cy += (gy - cy) * k;
-    var bob = Math.sin(t * 1.6) * 2.5;
-
-    // layers closer to the viewer travel further -> parallax reads as a head turn
-    set(L.body, cx * 3, bob * 0.3);
-    set(L.neck, cx * 5, bob * 0.5);
-    set(L.hairBack, -cx * 6, bob * 0.6);
-    set(L.tail, -cx * 14, bob * 0.8 - cy * 4);
-    set(L.locks, cx * 4, bob * 0.4);
-    L.head.setAttribute('transform', 'translate(' + (cx * 9).toFixed(2) + ' ' + (bob + cy * 5).toFixed(2) + ') rotate(' + (cx * 4.5).toFixed(2) + ' 200 300)');
-    set(L.face, cx * 10, cy * 7);
-    set(L.bangs, cx * 4, cy * 3);
-
-    if (now > blinkAt) {
-      blinkEnd = now + 130; blinkAt = now + 2400 + Math.random() * 2600;
-      winkSide = Math.random() < 0.3 ? (Math.random() < 0.5 ? -1 : 1) : 0;
-    }
-    var closing = now < blinkEnd;
-    var tgtL = closing && (winkSide === 0 || winkSide === -1) ? 0.1 : 1;
-    var tgtR = closing && (winkSide === 0 || winkSide === 1) ? 0.1 : 1;
-    lid[0] += (tgtL - lid[0]) * 0.6; lid[1] += (tgtR - lid[1]) * 0.6;
-    L.eyeL.setAttribute('transform', 'translate(0 ' + (214 * (1 - lid[0])).toFixed(1) + ') scale(1 ' + lid[0].toFixed(2) + ')');
-    L.eyeR.setAttribute('transform', 'translate(0 ' + (214 * (1 - lid[1])).toFixed(1) + ') scale(1 ' + lid[1].toFixed(2) + ')');
-    var ix = cx * 4, iy = cy * 3;
-    L.irisL.setAttribute('cx', 160 + ix); L.irisL.setAttribute('cy', 214 + iy);
-    L.irisR.setAttribute('cx', 240 + ix); L.irisR.setAttribute('cy', 214 + iy);
-
+    var bob = Math.sin(t * 1.6) * 6;
+    // the head leans toward the cursor in 3D
+    img.style.transform = 'translate(' + (cx * 14).toFixed(1) + 'px,' + (bob + cy * 8).toFixed(1) + 'px) rotateY(' + (cx * 16).toFixed(2) + 'deg) rotateX(' + (-cy * 10).toFixed(2) + 'deg) rotateZ(' + (cx * 3).toFixed(2) + 'deg)';
+    shadow.style.transform = 'translateX(' + (cx * 10).toFixed(1) + 'px) scaleX(' + (1 - Math.abs(bob) * 0.01).toFixed(3) + ')';
     for (var d = 0; d < decos.length; d++) {
       decos[d].style.transform = 'translate(' + (-cx * (10 + d * 5)).toFixed(1) + 'px,' + (-cy * (6 + d * 3)).toFixed(1) + 'px)';
     }
