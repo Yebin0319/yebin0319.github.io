@@ -34,7 +34,7 @@
 
   function $(id) { return document.getElementById(id); }
   var L = {
-    hairBack: $('cHairBack'), body: $('cBody'), neck: $('cNeck'), locks: $('cLocks'),
+    hairBack: $('cHairBack'), tail: $('cTail'), body: $('cBody'), neck: $('cNeck'), locks: $('cLocks'),
     head: $('cHead'), face: $('cFace'), bangs: $('cBangs'),
     eyeL: $('cEyeL'), eyeR: $('cEyeR'), irisL: $('cIrisL'), irisR: $('cIrisR')
   };
@@ -63,11 +63,12 @@
     // layers closer to the viewer travel further -> parallax reads as a head turn
     set(L.body, cx * 3, bob * 0.3);
     set(L.neck, cx * 5, bob * 0.5);
-    set(L.hairBack, -cx * 7, bob * 0.6);
+    set(L.hairBack, -cx * 6, bob * 0.6);
+    set(L.tail, -cx * 14, bob * 0.8 - cy * 4);
     set(L.locks, cx * 4, bob * 0.4);
     L.head.setAttribute('transform', 'translate(' + (cx * 9).toFixed(2) + ' ' + (bob + cy * 5).toFixed(2) + ') rotate(' + (cx * 4.5).toFixed(2) + ' 200 300)');
-    set(L.face, cx * 15, cy * 9);
-    set(L.bangs, cx * 7, cy * 4);
+    set(L.face, cx * 10, cy * 7);
+    set(L.bangs, cx * 4, cy * 3);
 
     if (now > blinkAt) {
       blinkEnd = now + 130; blinkAt = now + 2400 + Math.random() * 2600;
