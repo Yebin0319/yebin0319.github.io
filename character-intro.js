@@ -43,8 +43,8 @@
   var camera = new THREE.PerspectiveCamera(30, 1, 0.1, 100);
   var FOV_T = Math.tan(15 * Math.PI / 180);
 
-  scene.add(new THREE.HemisphereLight(0xfff4ec, 0xf3c9d4, 0.55));
-  var key = new THREE.DirectionalLight(0xffffff, 0.7); key.position.set(-3, 4, 6); scene.add(key);
+  scene.add(new THREE.HemisphereLight(0xfff4ec, 0xf3c9d4, 0.5));
+  var key = new THREE.DirectionalLight(0xffffff, 0.6); key.position.set(-3, 4, 6); scene.add(key);
   var rim = new THREE.PointLight(0xff9db8, 0.9, 20); rim.position.set(4, 2, -3); scene.add(rim);
 
   function mat(color, rough) { return new THREE.MeshStandardMaterial({ color: color, roughness: rough == null ? 0.55 : rough, metalness: 0 }); }
@@ -53,53 +53,58 @@
     mesh.scale.set(sx, sy, sz); mesh.position.set(x, y, z); (parent || scene).add(mesh); return mesh;
   }
 
-  var SKIN = mat(0xffdcc6, 0.6), HAIR = mat(0x15101a, 0.4), CARDI = mat(0x232637, 0.7);
-  var GREY = mat(0xd9d6dc, 0.8), BLACK = mat(0x1d1519, 0.25), GOLD = new THREE.MeshStandardMaterial({ color: 0xe2c383, roughness: 0.3, metalness: 0.7 });
+  var SKIN = new THREE.MeshStandardMaterial({ color: 0xffdcc2, roughness: 0.5, emissive: 0x4a2414, emissiveIntensity: 0.35 }), HAIR = new THREE.MeshStandardMaterial({ color: 0x0e0d10, roughness: 0.55, metalness: 0 });
+  var BROW = mat(0x3a3434, 0.6), LIP = mat(0xb3615f, 0.4);
 
   var chr = new THREE.Group(); scene.add(chr);
+  var head = new THREE.Group(); chr.add(head);
 
-  // ---- body ----
-  var body = new THREE.Group(); chr.add(body);
-  ell(1, 1.35, 1.0, 0.85, CARDI, 0, -1.55, 0, body);
-  ell(1, 0.62, 0.5, 0.5, GREY, 0, -0.9, 0.55, body);            // inner top
-  ell(1, 0.2, 0.2, 0.2, SKIN, 0, -0.55, 0.2, body);              // neck
-  ell(1, 0.26, 0.5, 0.26, CARDI, -1.62, -1.35, 0.1, body).rotation.z = -0.25;
-  ell(1, 0.26, 0.5, 0.26, CARDI, 1.62, -1.35, 0.1, body).rotation.z = 0.25;
+  // ---- head: egg-shaped, narrowing toward a soft chin ----
+  var hg = new THREE.SphereGeometry(1, 72, 56), hp = hg.attributes.position;
+  for (var i = 0; i < hp.count; i++) {
+    var x = hp.getX(i), y = hp.getY(i), z = hp.getZ(i);
+    var t = Math.min(1, Math.max(0, (0.15 - y) / 1.15));
+    var n = 1 - 0.34 * Math.pow(t, 1.4);
+    hp.setXYZ(i, x * 1.08 * n, y * 1.0, z * (1 - 0.1 * t) * (z > 0 ? 1 : 0.95) + (z > 0 ? 0.04 * t : 0));
+  }
+  hg.computeVertexNormals();
+  head.add(new THREE.Mesh(hg, SKIN));
+  ell(1, 0.13, 0.2, 0.1, SKIN, -1.11, 0.0, -0.05, head);
+  ell(1, 0.13, 0.2, 0.1, SKIN, 1.11, 0.0, -0.05, head);
+  ell(1, 0.09, 0.08, 0.09, SKIN, 0, -0.15, 1.01, head);                 // nose
 
-  // ---- hair behind (long, falls past shoulders) ----
-  ell(1, 1.2, 1.7, 0.95, HAIR, 0, -0.35, -0.55, chr);
-
-  // ---- head ----
-  var head = new THREE.Group(); head.position.set(0, -0.35, 0); chr.add(head);
-  var HY = 1.0;                                                    // head centre height in head space
-  ell(1, 1.1, 1.0, 1.0, SKIN, 0, HY, 0, head);
-  ell(1, 0.13, 0.18, 0.1, SKIN, -1.08, HY - 0.05, 0, head);        // ears
-  ell(1, 0.13, 0.18, 0.1, SKIN, 1.08, HY - 0.05, 0, head);
-
-  // hair cap + parted bangs + face-framing locks
-  var cap = new THREE.Mesh(new THREE.SphereGeometry(1.08, 48, 32, 0, Math.PI * 2, 0, 1.28), HAIR);
-  cap.scale.set(1.1, 1.05, 1.05); cap.position.set(0, HY + 0.1, -0.02); cap.rotation.x = -0.1; head.add(cap);
-  var bL = ell(1, 0.62, 0.38, 0.3, HAIR, -0.46, HY + 0.72, 0.82, head); bL.rotation.z = 0.45; bL.rotation.x = -0.35;
-  var bR = ell(1, 0.62, 0.38, 0.3, HAIR, 0.46, HY + 0.72, 0.82, head); bR.rotation.z = -0.45; bR.rotation.x = -0.35;
-  var lockL = ell(1, 0.2, 0.95, 0.3, HAIR, -1.08, HY - 0.55, 0.35, head); lockL.rotation.z = 0.06;
-  var lockR = ell(1, 0.2, 0.95, 0.3, HAIR, 1.08, HY - 0.55, 0.35, head); lockR.rotation.z = -0.06;
-
-  // face
+  // ---- face ----
   var eyes = [];
-  [-1, 1].forEach(function (s) {
-    var g = new THREE.Group(); g.position.set(s * 0.4, HY - 0.05, 0.93); head.add(g);
-    var e = ell(1, 0.095, 0.13, 0.05, BLACK, 0, 0, 0, g);
-    ell(1, 0.03, 0.035, 0.03, new THREE.MeshBasicMaterial({ color: 0xffffff }), 0.03, 0.05, 0.04, g);
-    var ring = new THREE.Mesh(new THREE.TorusGeometry(0.3, 0.022, 10, 48), GOLD);
-    ring.position.set(0, 0, 0.06); g.add(ring);
-    eyes.push({ g: g, e: e });
-    var blush = new THREE.Mesh(new THREE.CircleGeometry(0.17, 24), new THREE.MeshBasicMaterial({ color: 0xff9bb0, transparent: true, opacity: 0.55 }));
-    blush.position.set(s * 0.62, HY - 0.38, 0.8); blush.lookAt(s * 1.2, HY - 0.38, 2.4); head.add(blush);
+  [-1, 1].forEach(function (sd) {
+    var g = new THREE.Group(); g.position.set(sd * 0.4, 0.02, 0.9); g.rotation.y = sd * 0.42; head.add(g);
+    var white = ell(1, 0.15, 0.1, 0.05, new THREE.MeshStandardMaterial({ color: 0xfbf6f0, roughness: 0.4 }), 0, 0, 0, g);
+    var iris = ell(1, 0.1, 0.1, 0.05, new THREE.MeshStandardMaterial({ color: 0x4b3425, roughness: 0.25 }), 0, 0, 0.03, g);
+    ell(1, 0.05, 0.05, 0.03, BLACKISH(), 0, 0, 0.07, g);
+    ell(1, 0.028, 0.028, 0.02, new THREE.MeshBasicMaterial({ color: 0xffffff }), 0.035, 0.035, 0.1, g);
+    var lid = ell(1, 0.165, 0.11, 0.07, SKIN, 0, 0.1, 0.01, g);        // upper lid, slides down to blink
+    eyes.push({ g: g, iris: iris, lid: lid, side: sd });
+    var brow = ell(1, 0.2, 0.028, 0.04, BROW, sd * 0.4, 0.32, 0.93, head);
+    brow.rotation.z = sd * -0.1; brow.rotation.y = sd * 0.42;
+    var blush = new THREE.Mesh(new THREE.CircleGeometry(0.17, 24), new THREE.MeshBasicMaterial({ color: 0xff9bb0, transparent: true, opacity: 0.35 }));
+    blush.position.set(sd * 0.62, -0.28, 0.8); blush.lookAt(sd * 1.3, -0.28, 2.4); head.add(blush);
   });
-  var bridge = new THREE.Mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.2, 8), GOLD);
-  bridge.rotation.z = Math.PI / 2; bridge.position.set(0, HY + 0.02, 1.0); head.add(bridge);
-  var mouth = new THREE.Mesh(new THREE.TorusGeometry(0.11, 0.022, 10, 24, Math.PI), mat(0xc2556b, 0.5));
-  mouth.rotation.z = Math.PI; mouth.position.set(0, HY - 0.42, 0.97); head.add(mouth);
+  function BLACKISH() { return new THREE.MeshStandardMaterial({ color: 0x120c0a, roughness: 0.2 }); }
+  var mouth = new THREE.Mesh(new THREE.TorusGeometry(0.13, 0.026, 10, 28, Math.PI * 0.8), LIP);
+  mouth.rotation.z = Math.PI * 1.1; mouth.position.set(0.03, -0.5, 0.93); mouth.rotation.y = 0.06; head.add(mouth);
+
+  // ---- hair: glossy cap with blunt fringe, volume behind, high ponytail ----
+  var cap = new THREE.Mesh(new THREE.SphereGeometry(1.1, 64, 40, 0, Math.PI * 2, 0, 1.78), HAIR);
+  cap.scale.set(1.12, 1.08, 1.1); cap.position.set(0, 0.1, -0.04); cap.rotation.x = -0.28; head.add(cap);
+  ell(1, 1.1, 1.0, 0.8, HAIR, 0, 0.18, -0.55, head);                    // back volume
+  ell(1, 0.14, 0.55, 0.45, HAIR, -1.08, 0.12, 0.0, head);               // side hair in front of ears
+  ell(1, 0.14, 0.55, 0.45, HAIR, 1.08, 0.12, 0.0, head);
+  ell(1, 0.5, 0.42, 0.45, HAIR, 0.52, 1.05, -0.62, head);               // ponytail knot
+  var tailPts = [[0.6, 0.95, -0.7], [0.85, 0.55, -0.85], [1.05, 0.0, -0.8], [1.12, -0.6, -0.65], [1.05, -1.15, -0.5], [0.95, -1.55, -0.35]];
+  var curve = new THREE.CatmullRomCurve3(tailPts.map(function (q) { return new THREE.Vector3(q[0], q[1], q[2]); }));
+  for (var k = 0; k <= 40; k++) {
+    var u = k / 40, pt = curve.getPoint(u), r = 0.36 * (1 - u * 0.88) + 0.04;
+    ell(1, r, r * 1.35, r, HAIR, pt.x, pt.y, pt.z, head);
+  }
 
   // ---- floating pastel decor ----
   var decor = [];
@@ -121,10 +126,10 @@
     renderer.setSize(w, h, false);
     var aspect = w / h;
     camera.aspect = aspect; camera.updateProjectionMatrix();
-    var visH = Math.max(6.4, 6.2 / aspect);               // keep the whole bust in frame on tall screens
-    camera.position.set(0, 0.15, visH / 2 / FOV_T);
-    camera.lookAt(0, 0.15, 0);
-    chr.position.y = aspect < 0.9 ? -0.2 : -0.45;
+    var visH = Math.max(6.4, 5.8 / aspect);               // keep the whole bust in frame on tall screens
+    camera.position.set(0, 0, visH / 2 / FOV_T);
+    camera.lookAt(0, 0, 0);
+    chr.position.y = -0.85;
   }
   window.addEventListener('resize', resize);
   resize();
@@ -136,7 +141,7 @@
     lastMove = performance.now();
   }, { passive: true });
 
-  var prev = performance.now(), blinkAt = prev + 1800, blinkEnd = 0;
+  var prev = performance.now(), blinkAt = prev + 1800, blinkEnd = 0, winkSide = 0;
   function frame(now) {
     raf = requestAnimationFrame(frame);
     var dt = Math.min((now - prev) / 1000, 0.05); prev = now;
@@ -147,18 +152,23 @@
     var k = 1 - Math.exp(-6 * dt);
     cx += (gx - cx) * k; cy += (gy - cy) * k;
 
-    head.rotation.y = cx * 0.7;
-    head.rotation.x = cy * 0.35;
-    head.rotation.z = -cx * 0.06;
-    body.rotation.y = cx * 0.16;
-    body.position.y = Math.sin(t * 1.6) * 0.03;
-    head.position.y = -0.35 + Math.sin(t * 1.6 + 0.4) * 0.04;
+    head.rotation.y = cx * 0.6;
+    head.rotation.x = cy * 0.3;
+    head.rotation.z = -cx * 0.07 + Math.sin(t * 0.8) * 0.02;
+    head.position.y = Math.sin(t * 1.6) * 0.04;
 
-    // eyes glance a bit further than the head
-    for (var i = 0; i < eyes.length; i++) { eyes[i].e.position.x = cx * 0.05; eyes[i].e.position.y = -cy * 0.04; }
-    if (now > blinkAt) { blinkEnd = now + 130; blinkAt = now + 2200 + Math.random() * 2600; }
-    var blink = now < blinkEnd ? 0.12 : 1;
-    for (var j = 0; j < eyes.length; j++) eyes[j].e.scale.y += (0.13 * blink - eyes[j].e.scale.y) * 0.6;
+    if (now > blinkAt) {
+      blinkEnd = now + 140; blinkAt = now + 2400 + Math.random() * 2600;
+      winkSide = (Math.random() < 0.3) ? (Math.random() < 0.5 ? -1 : 1) : 0;
+    }
+    var closing = now < blinkEnd;
+    for (var i2 = 0; i2 < eyes.length; i2++) {
+      var E = eyes[i2];
+      var shut = closing && (winkSide === 0 || winkSide === E.side);
+      if (winkSide === E.side && now < blinkEnd + 380 && now > blinkEnd - 140) shut = true;
+      E.lid.position.y += ((shut ? 0.0 : 0.1) - E.lid.position.y) * 0.6;
+      E.iris.position.x = cx * 0.05; E.iris.position.y = -cy * 0.03;
+    }
 
     for (var d = 0; d < decor.length; d++) {
       var o = decor[d];
